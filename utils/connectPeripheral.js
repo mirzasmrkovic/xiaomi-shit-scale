@@ -1,7 +1,5 @@
-// const Scale = require('./Scale/scale.js');
-let noble = require('noble-mac')
-let peripheralId = 'e0ff1a5adf4f43ea87fd067f66ce3395' // process.argv[2].toLowerCase()
-// let scale
+import noble from 'noble-mac'
+let peripheralId = 'e0ff1a5adf4f43ea87fd067f66ce3395'
 
 noble.startScanning()
 
@@ -10,7 +8,6 @@ noble.on('discover', peripheral => {
   if (peripheral.id === peripheralId)
     peripheral.connect(() => {
       noble.stopScanning()
-      // scale = new Scale(peripheral)
 
       peripheral.discoverServices(['181d'], (e, services) => {
         let scale = services[0]
