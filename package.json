@@ -3,8 +3,9 @@
   "version": "1.0.0-pwd",
   "description": "none",
   "scripts": {
-    "dev": "nodemon -r esm index.js",
-    "build": "node index.js"
+    "api": "nodemon -r esm index.js",
+    "dev": "concurrently \"npm run api\" \"cd client && npm start\"",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Mirza Šmrković",
@@ -19,6 +20,7 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "nodemon": "^2.0.4"
   },
   "engines": {
