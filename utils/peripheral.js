@@ -3,9 +3,9 @@ let peripheralId = 'e0ff1a5adf4f43ea87fd067f66ce3395'
 
 noble.startScanning()
 
-noble.on('discover', peripheral => {
+const halo = noble.on('discover', peripheral => {
   console.log(peripheral.id)
-  if (peripheral.id === peripheralId)
+  if (peripheral.id === peripheralId) {
     peripheral.connect(() => {
       noble.stopScanning()
 
@@ -29,4 +29,5 @@ noble.on('discover', peripheral => {
         })
       })
     })
+  }
 })
