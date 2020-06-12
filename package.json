@@ -5,7 +5,8 @@
   "scripts": {
     "api": "nodemon -r esm index.js",
     "dev": "concurrently \"npm run api\" \"cd client && npm start\"",
-    "start": "node index.js"
+    "peripheral": "cd utils && node -r esm peripheral.js",
+    "start": "node -r esm index.js"
   },
   "keywords": [],
   "author": "Mirza Šmrković",
@@ -17,6 +18,7 @@
     "express": "^4.17.1",
     "mongodb": "^3.5.8",
     "mongoose": "^5.9.18",
+    "noble-mac": "https://github.com/Timeular/noble-mac.git",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
@@ -24,7 +26,7 @@
     "nodemon": "^2.0.4"
   },
   "engines": {
-    "node": "12.18.x",
+    "node": "8.16.x",
     "npm": "6.14.x"
   }
 }
