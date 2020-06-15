@@ -5,7 +5,7 @@
   "scripts": {
     "api": "nodemon -r esm index.js",
     "dev": "concurrently \"npm run api\" \"cd client && npm start\"",
-    "peripheral": "cd utils && node -r esm peripheral.js",
+    "peripheral": "cd utils && nodemon -r esm peripheral.js",
     "start": "node -r esm index.js"
   },
   "keywords": [],
