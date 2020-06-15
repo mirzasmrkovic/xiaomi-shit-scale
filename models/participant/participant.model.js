@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import bcrypt from 'bcryptjs'
 
 const effortSchema = new mongoose.Schema(
   {
@@ -18,9 +19,6 @@ const participantSchema = new mongoose.Schema({
   },
   efforts: [effortSchema]
 })
-
-import mongoose from 'mongoose'
-import bcrypt from 'bcryptjs'
 
 participantSchema.pre('save', function (next) {
   const participant = this
