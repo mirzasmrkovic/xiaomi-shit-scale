@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { controllers } from './scoreboard.controller'
+import { controllers } from './leaderboard.controller'
 
 const router = Router()
 

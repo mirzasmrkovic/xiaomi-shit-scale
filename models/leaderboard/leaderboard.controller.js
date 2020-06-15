@@ -1,6 +1,6 @@
-import { Scoreboard } from './scoreboard.model'
+import { Leaderboard } from './leaderboard.model'
 
-export const getScoreboard = model => async (req, res) => {
+export const getLeaderboard = model => async (req, res) => {
   try {
     const doc = await model.find()
     if (!doc) return res.status(400).end()
@@ -15,4 +15,4 @@ const crudControllers = model => {
   getAll: getAll(model)
 }
 
-export const controllers = crudControllers(Scoreboard)
+export const controllers = crudControllers(Leaderboard)
