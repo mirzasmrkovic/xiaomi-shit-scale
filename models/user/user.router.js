@@ -1,12 +1,12 @@
 import { Router } from 'express'
-import { controllers } from './participant.controller'
+import { controllers } from './user.controller'
 
 const router = Router()
 
-// /api/restaurant
+// /api/usr
 router
   .route('/')
-  .get(controllers.getAll)
+  .get(controllers.getOne)
 
   .post(controllers.createOne)
 
