@@ -3,11 +3,10 @@ import { controllers } from './leaderboard.controller'
 
 const router = Router()
 
-// /api/scale/scoreboar
-router
-  .route('/')
-  .get(controllers.getAll)
+// /api/scale/leaderboard
+router.route('/')
+// .get(controllers.getAll)
 
-  .post(controllers.createOne)
+// .post(controllers.createOne)
 
 export default router

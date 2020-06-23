@@ -12,7 +12,7 @@ export const getLeaderboard = model => async (req, res) => {
 }
 
 const crudControllers = model => {
-  getAll: getAll(model)
+  getAll: getLeaderboard(model)
 }
 
 export const controllers = crudControllers(Leaderboard)

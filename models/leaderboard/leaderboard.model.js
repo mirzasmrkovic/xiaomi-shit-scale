@@ -1,15 +1,17 @@
 import mongoose from 'mongoose'
-import { Participant } from '../participant/participant.model'
+import { effortSchema } from '../effort/effort.model'
+const Schema = mongoose.Schema
 
-const leaderboardSchema = new mongoose.Schema({
-  leaderboard: [Participant],
+const leaderboardSchema = new Schema({
+  leaderboard: [effortSchema],
   scaleID: {
     type: String,
     required: true
   },
   owner: {
-    type: String
+    type: Schema.Types.ObjectId,
+    ref: 'Participant'
   }
 })
 
-export const Leaderboard = mongoose.model('leaderboard', leaderboardSchema)
+export const Leaderboard = mongoose.model('Leaderboard', leaderboardSchema)
