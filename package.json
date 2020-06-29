@@ -20,6 +20,7 @@
     "mongodb": "^3.5.8",
     "mongoose": "^5.9.18",
     "noble-mac": "https://github.com/Timeular/noble-mac.git",
+    "ramda": "^0.27.0",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
