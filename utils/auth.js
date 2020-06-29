@@ -1,11 +1,10 @@
 import { User } from '../models/user/user.model'
 import jwt from 'jsonwebtoken'
 
-export const newToken = user => {
+export const newToken = user =>
   jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXP
   })
-}
 
 export const verifyToken = token =>
   new Promise((resolve, reject) => {
@@ -15,17 +14,17 @@ export const verifyToken = token =>
     })
   })
 
-export const signUp = async (req, res) => {
+export const signup = async (req, res) => {
   try {
     const user = await User.create(req.body)
     const token = newToken(user)
-    return res.status(201).send({ token })
+    return res.status(201).json({ token })
   } catch (err) {
     console.error(err)
     return res.status(500).end()
   }
 }
-export const signIn = async (req, res) => {
+export const login = async (req, res) => {
   if (!req.body.username || !req.body.password)
     return res
       .status(401)

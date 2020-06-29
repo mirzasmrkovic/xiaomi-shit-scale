@@ -1,8 +1,13 @@
+require('dotenv').config()
 import express from 'express'
 import path from 'path'
 import socket from 'socket.io'
 import { connect } from './utils/db.js'
 import { connectPeripheral } from './utils/peripheral'
+import { protect, login, signup } from './utils/auth'
+
+import userRouter from './models/user/user.router'
+import effortRouter from './models/effort/effort.router'
 
 const app = express()
 const port = process.env.PORT || 3001
@@ -10,6 +15,16 @@ const dbPort =
   process.env.DB_PORT || 'mongodb://localhost:27017/xiaomi-scoreboard'
 
 app.use(express.static(path.join(__dirname, 'client/build')))
+app.use(express.json())
+
+// Auth
+app.use('/signup', signup)
+app.use('/login', login)
+app.use('/api/', protect)
+
+// Api
+app.use('/api/usr/', userRouter)
+app.use('/api/effort', effortRouter)
 
 export const start = async () => {
   try {
