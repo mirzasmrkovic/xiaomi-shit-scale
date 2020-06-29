@@ -30,22 +30,25 @@ const concludeEffort = async (req, res) => {
   console.log('conclude')
   if (req.statusActive !== 1) return res.status(400).end()
   try {
-    const effort = await Effort.findOneAndUpdate(
+    const effort = await Effort.findOne({ uid: req.user._id, status: 'active' })
+      .lean()
+      .exec()
+
+    const updated = await Effort.findOneAndUpdate(
       { uid: req.user._id, status: 'active' },
       {
         ...req.body,
-        status: 'concluded'
+        status: 'concluded',
+        score: effort.commence - req.body.conclude
       },
       { new: true }
     )
-    return res.status(200).send({ data: effort })
+    return res.status(200).send({ data: updated })
   } catch (error) {
     console.error(error)
     return res.status(400).end()
   }
 }
-
-// const getLeaderboard = async (req, res) => {}
 
 export const controllers = {
   ...crudControllers(Effort),
