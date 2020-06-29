@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import { effortSchema } from '../effort/effort.model'
 import bcrypt from 'bcryptjs'
 
 const userSchema = new mongoose.Schema({
@@ -10,16 +9,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  },
-  current: {
-    effortSchema,
-    status: {
-      type: String,
-      enum: ['active', 'concluded'],
-      default: 'active'
-    }
-  },
-  efforts: [effortSchema]
+  }
 })
 
 userSchema.pre('save', function (next) {

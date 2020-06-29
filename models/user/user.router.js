@@ -1,12 +1,12 @@
 import { Router } from 'express'
-import { controllers } from './user.controller'
+import { controllers, me } from './user.controller'
 
 const router = Router()
 
 // /api/usr
 router
   .route('/')
-  .get(controllers.getOne)
+  .get(me)
 
   .post(controllers.createOne)
 
