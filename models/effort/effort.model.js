@@ -13,9 +13,14 @@ export const effortSchema = new Schema(
       required: true
     },
     conclude: Number,
+    status: {
+      type: String,
+      enum: ['concluded', 'active'],
+      default: 'active'
+    },
     score: Number
   },
   { timestamps: true }
 )
 
-// export const Effort = mongoose.model('Effort', effortSchema)
+export const Effort = mongoose.model('Effort', effortSchema)
