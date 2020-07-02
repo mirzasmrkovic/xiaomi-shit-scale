@@ -8,6 +8,7 @@ import { protect, login, signup } from './utils/auth'
 
 import userRouter from './models/user/user.router'
 import effortRouter from './models/effort/effort.router'
+import leaderboardRouter from './models/effort/leaderboard/leaderboard.router'
 
 const app = express()
 const port = process.env.PORT || 3001
@@ -20,7 +21,8 @@ app.use(express.json())
 // Auth
 app.use('/signup', signup)
 app.use('/login', login)
-app.use('/api/', protect)
+app.use('/api', protect)
+app.use('/leaderboard', leaderboardRouter)
 
 // Api
 app.use('/api/usr/', userRouter)
